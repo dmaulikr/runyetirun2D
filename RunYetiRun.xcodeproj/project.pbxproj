@@ -182,6 +182,7 @@
 		EB0802611906E5A80021EFD9 /* HelloWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0802601906E5A80021EFD9 /* HelloWorldScene.m */; };
 		EB0802641906E5A80021EFD9 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0802631906E5A80021EFD9 /* IntroScene.m */; };
 		EB0802721906EF3F0021EFD9 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0802711906EF3F0021EFD9 /* GameScene.m */; };
+		EB0802781907295A0021EFD9 /* yeti.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0802771907295A0021EFD9 /* yeti.png */; };
 		EB08FFB51906E5990021EFD9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB08FFB41906E5990021EFD9 /* QuartzCore.framework */; };
 		EB08FFB71906E5990021EFD9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB08FFB61906E5990021EFD9 /* OpenGLES.framework */; };
 		EB08FFB91906E5990021EFD9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB08FFB81906E5990021EFD9 /* OpenAL.framework */; };
@@ -620,6 +621,7 @@
 		EB0802631906E5A80021EFD9 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
 		EB0802701906EF3F0021EFD9 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
 		EB0802711906EF3F0021EFD9 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = Classes/GameScene.m; sourceTree = "<group>"; };
+		EB0802771907295A0021EFD9 /* yeti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yeti.png; path = Resources/yeti.png; sourceTree = "<group>"; };
 		EB08FFB11906E5990021EFD9 /* RunYetiRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunYetiRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB08FFB41906E5990021EFD9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB08FFB61906E5990021EFD9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1444,6 +1446,7 @@
 		EB08FFCD1906E5990021EFD9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EB0802771907295A0021EFD9 /* yeti.png */,
 				EB08FFCE1906E5990021EFD9 /* Default.png */,
 				EB08FFD01906E5990021EFD9 /* Default@2x.png */,
 				EB08FFD21906E5990021EFD9 /* Default-568h@2x.png */,
@@ -1629,6 +1632,7 @@
 				EB08FFDA1906E5990021EFD9 /* Icon@2x.png in Resources */,
 				EB08FFEC1906E5990021EFD9 /* Icon-Small@2x.png in Resources */,
 				EB08FFDE1906E5990021EFD9 /* Icon-72@2x.png in Resources */,
+				EB0802781907295A0021EFD9 /* yeti.png in Resources */,
 				EB08FFCF1906E5990021EFD9 /* Default.png in Resources */,
 				EB08FFD81906E5990021EFD9 /* Icon.png in Resources */,
 				EB08FFE61906E5990021EFD9 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,

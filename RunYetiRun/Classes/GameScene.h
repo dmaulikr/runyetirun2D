@@ -11,6 +11,9 @@
 
 @interface GameScene : CCScene {
     
+    // STEP 2
+    CCSprite *yeti;
+    
 }
     // STEP 1
 +(GameScene *) scene;
