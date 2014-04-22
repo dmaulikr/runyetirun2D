@@ -181,6 +181,7 @@
 		EB08025E1906E5A80021EFD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB08025D1906E5A80021EFD9 /* AppDelegate.m */; };
 		EB0802611906E5A80021EFD9 /* HelloWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0802601906E5A80021EFD9 /* HelloWorldScene.m */; };
 		EB0802641906E5A80021EFD9 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0802631906E5A80021EFD9 /* IntroScene.m */; };
+		EB0802721906EF3F0021EFD9 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0802711906EF3F0021EFD9 /* GameScene.m */; };
 		EB08FFB51906E5990021EFD9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB08FFB41906E5990021EFD9 /* QuartzCore.framework */; };
 		EB08FFB71906E5990021EFD9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB08FFB61906E5990021EFD9 /* OpenGLES.framework */; };
 		EB08FFB91906E5990021EFD9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB08FFB81906E5990021EFD9 /* OpenAL.framework */; };
@@ -617,6 +618,8 @@
 		EB0802601906E5A80021EFD9 /* HelloWorldScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HelloWorldScene.m; path = Classes/HelloWorldScene.m; sourceTree = "<group>"; };
 		EB0802621906E5A80021EFD9 /* IntroScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Classes/IntroScene.h; sourceTree = "<group>"; };
 		EB0802631906E5A80021EFD9 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
+		EB0802701906EF3F0021EFD9 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
+		EB0802711906EF3F0021EFD9 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = Classes/GameScene.m; sourceTree = "<group>"; };
 		EB08FFB11906E5990021EFD9 /* RunYetiRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunYetiRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB08FFB41906E5990021EFD9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB08FFB61906E5990021EFD9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1387,6 +1390,8 @@
 				EB0802601906E5A80021EFD9 /* HelloWorldScene.m */,
 				EB0802621906E5A80021EFD9 /* IntroScene.h */,
 				EB0802631906E5A80021EFD9 /* IntroScene.m */,
+				EB0802701906EF3F0021EFD9 /* GameScene.h */,
+				EB0802711906EF3F0021EFD9 /* GameScene.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1782,6 +1787,7 @@
 				EB0801DE1906E5A70021EFD9 /* CCBsequence.m in Sources */,
 				EB08003F1906E59B0021EFD9 /* CCLabelAtlas.m in Sources */,
 				EB0800DA1906E59E0021EFD9 /* cocos2d.m in Sources */,
+				EB0802721906EF3F0021EFD9 /* GameScene.m in Sources */,
 				EB0801621906E5A50021EFD9 /* ALSource.m in Sources */,
 				EB08006A1906E59B0021EFD9 /* CCParticleSystem.m in Sources */,
 				EB08008F1906E59C0021EFD9 /* CCScene.m in Sources */,
