@@ -20,7 +20,7 @@
     if ((self = [super init])) {
         CCLOG(@"%@: %@", NSStringFromSelector(_cmd), self);
         
-        // STEP 2
+        // STEP 2 - Adding the Yeti sprite
         yeti = [CCSprite spriteWithImageNamed:@"yeti.png"];
         [self addChild:yeti];
         
@@ -28,6 +28,12 @@
         // delete
         //CGSize imageSize = yeti.texture.contentSize;
         yeti.position = CGPointMake(screenSize.width * 3 / 4, screenSize.height / 2);
+        
+        // STEP 3 - Adding background
+        // Explain why using z:-1
+        CCSprite *background = [CCSprite spriteWithImageNamed:@"background.png"];
+        background.position = CGPointMake(screenSize.width / 2, screenSize.height / 2);
+        [self addChild:background z:-1];
     }
     
     return self;
