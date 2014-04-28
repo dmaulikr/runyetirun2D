@@ -69,9 +69,12 @@
     return self;
 }
 
+// STEP 6 - Detect collisions
 -(void) update:(CCTime)delta
 {//https://www.makegameswith.us/gamernews/359/cocos2d-30-a-brief-transition-guide
 
+    // STEP 6 - Detect collisions
+    [self detectCollisions];
 }
 
 // STEP 4 - Moving the Yeti
@@ -125,7 +128,7 @@
     }
     
     // Explain the schedule method and why we take this approach
-    [self schedule:@selector(throwSnowBall:) interval:4.5f];
+    [self schedule:@selector(throwSnowBall:) interval:3.5f];
 
 }
 
@@ -156,10 +159,25 @@
             // Explain sequences and nil
             CCActionSequence *sequence = [CCActionSequence actionWithArray:@[throwSnowBall, callDidThrown]];
             [snowBall runAction:sequence];
+            
+            // STEP 6 - Set visible the snow ball once it's out of the screen
+            [snowBall setVisible:TRUE];
 
             break;
         }
     }
 }
+
+// STEP 6 - Detect collisions
+-(void) detectCollisions{
+    for (CCSprite *snowBall in snowBalls){
+        
+        if (CGRectIntersectsRect(snowBall.boundingBox, yeti.boundingBox)) {
+            CCLOG(@"COLLISION!");
+            [snowBall setVisible:FALSE];
+        }
+    }
+}
+
 
 @end

@@ -27,4 +27,7 @@
 // STEP 5 - Initialize snow balls
 -(void) initSnowBalls;
 
+// STEP 6 - Detect collisions
+-(void) detectCollisions;
+
 @end
