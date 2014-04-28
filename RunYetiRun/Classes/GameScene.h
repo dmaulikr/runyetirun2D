@@ -14,10 +14,17 @@
     // STEP 2
     CCSprite *yeti;
     
+    // STEP 5 - Explain why avoidusing CCArray
+    NSMutableArray *snowBalls;
+    int numSnowBalls;
 }
     // STEP 1
 +(GameScene *) scene;
 
 // STEP 4 - Moving the Yeti
 -(void) moveYetiToPosition:(CGPoint)newPosition;
+
+// STEP 5 - Initialize snow balls
+-(void) initSnowBalls;
+
 @end

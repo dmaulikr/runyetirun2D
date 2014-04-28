@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 
+#define yetiSpeed   360.0
 
 @implementation GameScene
     // STEP 1
@@ -38,16 +39,49 @@
         // STEP 4 - Moving the Yeti //https://www.makegameswith.us/gamernews/359/cocos2d-30-a-brief-transition-guide
         // to enable touch handling on you CCNode:
         self.userInteractionEnabled = TRUE;
+        
+        // STEP 5 - Adding snow balls
+        CCSprite *tempSnowBall = [CCSprite spriteWithImageNamed:@"SnowBall.png"];
+        
+        // STEP 5 - Calculate how many snow balls can fit on the screen
+        float snowBallHeight = tempSnowBall.texture.contentSize.height;
+        
+        numSnowBalls = screenSize.height / snowBallHeight; // x 2 to increase dificulty
+        
+        //STEP 5 - Initialize the snow balls array
+        snowBalls = [NSMutableArray arrayWithCapacity:numSnowBalls];
+        
+        for (int i = 0; i < numSnowBalls;i++){
+            CCSprite *snowBall = [CCSprite spriteWithImageNamed:@"SnowBall.png"];
+
+            // Add the snow ball to the scene
+            [self addChild:snowBall];
+            
+            // Add the snow ball to the array
+            [snowBalls addObject:snowBall];
+        }
+                
+        // STEP 5 - Initialize the snow balls position
+        [self initSnowBalls];
+        
     }
     
     return self;
 }
 
-// STEP 4 - Moving the Yeti
 -(void) update:(CCTime)delta
 {//https://www.makegameswith.us/gamernews/359/cocos2d-30-a-brief-transition-guide
-    CCLOG(@"%@", @"Schedule update is called automatically");
 
+}
+
+// STEP 4 - Moving the Yeti
+// to catch a touch and its touch position
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    // Prevent actions sum. Explain MoveTo and MoveBy behaviour
+    [yeti stopAllActions];
+    CGPoint touchLocation = [touch locationInNode:self];
+    [self moveYetiToPosition:touchLocation];
 }
 
 // STEP 4 - Moving the Yeti
@@ -60,29 +94,72 @@
     // Preventing the yeti go out of the screen
     CGSize screenSize = [CCDirector sharedDirector].viewSize;
     float yetiHeight = yeti.texture.contentSize.height;
-
+    
     if (newPosition.y > screenSize.height - yetiHeight/2) {
         newPosition.y = screenSize.height - yetiHeight/2;
     } else if (newPosition.y < yetiHeight/2) {
         newPosition.y = yetiHeight/2;
     }
     
-    float speed = 360; //pixels/second
-    float duration = ccpDistance(newPosition, yetiPosition) / speed;
+    float duration = ccpDistance(newPosition, yetiPosition) / yetiSpeed;
     
     CCAction *actionMove = [CCActionMoveTo actionWithDuration:duration position:CGPointMake(yetiPosition.x, newPosition.y)];
     [yeti runAction:actionMove];
-    
 }
 
-// STEP 4 - Moving the Yeti
-// to catch a touch and its touch position
-- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    // Prevent actions sum. Explain MoveTo and MoveBy behaviour
-    [yeti stopAllActions];
-    CGPoint touchLocation = [touch locationInNode:self];
-    [self moveYetiToPosition:touchLocation];
+// STEP 5 - Initialize snow balls
+-(void) initSnowBalls {
+    int positionY = 0;
+    
+    for (int i = 0; i < snowBalls.count; i++){
+        
+        CCSprite *snowBall = [snowBalls objectAtIndex:i];
+        
+        // Put the snow ball out of the screen
+        positionY += snowBall.contentSize.height;
+        CGPoint snowBallPosition = CGPointMake(-snowBall.texture.contentSize.width / 2, positionY);
+        
+        snowBall.position = snowBallPosition;
+        
+        [snowBall stopAllActions];
+    }
+    
+    // Explain the schedule method and why we take this approach
+    [self schedule:@selector(throwSnowBall:) interval:4.5f];
+
+}
+
+// STEP 5 - Throw snow balls
+-(void) throwSnowBall:(CCTime) delta {
+    for (int i = 0; i < numSnowBalls; i++){
+    
+        int randomSnowBall = CCRANDOM_0_1() * snowBalls.count;
+        CCLOG(@"randomSnowBall %d", randomSnowBall);
+        
+        CCSprite *snowBall = [snowBalls objectAtIndex:randomSnowBall];
+        
+        // We don't want to stop the snow ball
+        if (snowBall.numberOfRunningActions == 0) {
+            CGPoint newSnowBallPosition = snowBall.position;
+            newSnowBallPosition.x = [CCDirector sharedDirector].viewSize.width + snowBall.texture.contentSize.width / 2;
+
+            CCAction *throwSnowBall = [CCActionMoveTo actionWithDuration:1 position:newSnowBallPosition];
+            
+            // Explain blocks, new use
+            CCActionCallBlock *callDidThrown = [CCActionCallBlock actionWithBlock:^{
+
+                CGPoint position = snowBall.position;
+                position.x = -snowBall.texture.contentSize.width / 2;
+                snowBall.position = position;
+            }];
+
+            // Explain sequences and nil
+            CCActionSequence *sequence = [CCActionSequence actionWithArray:@[throwSnowBall, callDidThrown]];
+            [snowBall runAction:sequence];
+
+            break;
+        }
+    }
 }
 
 @end

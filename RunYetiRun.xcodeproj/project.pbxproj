@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3BA757C9190D12E500BDC69E /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA757C8190D12E500BDC69E /* background.png */; };
+		3BA757CD190EB7BB00BDC69E /* SnowBall.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA757CC190EB7BB00BDC69E /* SnowBall.png */; };
 		EB0800011906E5990021EFD9 /* CCActionEase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0800001906E5990021EFD9 /* CCActionEase.m */; };
 		EB0800041906E5990021EFD9 /* CCActionInstant.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0800031906E5990021EFD9 /* CCActionInstant.m */; };
 		EB0800071906E59A0021EFD9 /* CCActionInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0800061906E59A0021EFD9 /* CCActionInterval.m */; };
@@ -229,6 +230,7 @@
 
 /* Begin PBXFileReference section */
 		3BA757C8190D12E500BDC69E /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		3BA757CC190EB7BB00BDC69E /* SnowBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnowBall.png; sourceTree = "<group>"; };
 		EB0800001906E5990021EFD9 /* CCActionEase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CCActionEase.m; path = Libraries/cocos2d/CCActionEase.m; sourceTree = "<group>"; };
 		EB0800021906E5990021EFD9 /* CCActionInstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCActionInstant.h; path = Libraries/cocos2d/CCActionInstant.h; sourceTree = "<group>"; };
 		EB0800031906E5990021EFD9 /* CCActionInstant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CCActionInstant.m; path = Libraries/cocos2d/CCActionInstant.m; sourceTree = "<group>"; };
@@ -1448,6 +1450,7 @@
 		EB08FFCD1906E5990021EFD9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3BA757CC190EB7BB00BDC69E /* SnowBall.png */,
 				3BA757C8190D12E500BDC69E /* background.png */,
 				EB0802771907295A0021EFD9 /* yeti.png */,
 				EB08FFCE1906E5990021EFD9 /* Default.png */,
@@ -1651,6 +1654,7 @@
 				EB08FFDC1906E5990021EFD9 /* Icon-72.png in Resources */,
 				3BA757C9190D12E500BDC69E /* background.png in Resources */,
 				EB08012A1906E5A50021EFD9 /* LICENSE_cocos2d.txt in Resources */,
+				3BA757CD190EB7BB00BDC69E /* SnowBall.png in Resources */,
 				EB08FFD31906E5990021EFD9 /* Default-568h@2x.png in Resources */,
 				EB08FFF31906E5990021EFD9 /* iTunesArtwork in Resources */,
 				EB08FFEE1906E5990021EFD9 /* Icon-Spotlight-iOS7.png in Resources */,
