@@ -18,4 +18,6 @@
     // STEP 1
 +(GameScene *) scene;
 
+// STEP 4 - Moving the Yeti
+-(void) moveYetiToPosition:(CGPoint)newPosition;
 @end
