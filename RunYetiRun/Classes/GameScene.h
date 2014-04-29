@@ -30,4 +30,6 @@
 // STEP 6 - Detect collisions
 -(void) detectCollisions;
 
+ // STEP 7 - Let's make blink the yeti!
+-(void) manageCollision;
 @end

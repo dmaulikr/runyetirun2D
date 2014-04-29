@@ -162,7 +162,7 @@
             
             // STEP 6 - Set visible the snow ball once it's out of the screen
             [snowBall setVisible:TRUE];
-
+            
             break;
         }
     }
@@ -175,8 +175,26 @@
         if (CGRectIntersectsRect(snowBall.boundingBox, yeti.boundingBox)) {
             CCLOG(@"COLLISION!");
             [snowBall setVisible:FALSE];
+            
+             // STEP 7 - Let's make blink the yeti!
+            [self manageCollision];
         }
     }
+}
+
+-(void) manageCollision{
+    
+    
+    // STEP 7 - Let's make blink the yeti!
+    CCAction *actionBlink = [CCActionBlink actionWithDuration:0.9 blinks:3];
+    CCActionCallBlock *callDidBlink = [CCActionCallBlock actionWithBlock:^{
+        CCLOG(@"STOP ACTIONS!");
+        [yeti setVisible:TRUE];
+    }];
+    
+    CCActionSequence *sequence = [CCActionSequence actionWithArray:@[actionBlink, callDidBlink]];
+    [yeti runAction:sequence];
+
 }
 
 
