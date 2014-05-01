@@ -17,6 +17,11 @@
     // STEP 5 - Explain why avoidusing CCArray
     NSMutableArray *snowBalls;
     int numSnowBalls;
+    
+    // STEP 8 - Show and increase score
+    CCLabelTTF *scoreLabel;
+    int gameScore;
+    BOOL collisionDetected;
 }
     // STEP 1
 +(GameScene *) scene;
@@ -30,6 +35,10 @@
 // STEP 6 - Detect collisions
 -(void) detectCollisions;
 
- // STEP 7 - Let's make blink the yeti!
+// STEP 7 - Let's make blink the yeti!
 -(void) manageCollision;
+
+// STEP 8 - Show and increase score
+-(void) increaseScore;
+
 @end

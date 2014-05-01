@@ -64,6 +64,14 @@
         // STEP 5 - Initialize the snow balls position
         [self initSnowBalls];
         
+        // STEP 8 - Show score. Talk about anchor points on labels
+        gameScore = 0;
+        scoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", gameScore] fontName:@"Arial" fontSize:30];
+        scoreLabel.position = CGPointMake(screenSize.width / 2, screenSize.height - 30);
+        [self addChild:scoreLabel];
+        
+        // STEP 8 - Show and increase score
+        collisionDetected = FALSE;
     }
     
     return self;
@@ -82,7 +90,9 @@
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     // Prevent actions sum. Explain MoveTo and MoveBy behaviour
-    [yeti stopAllActions];
+    //[yeti stopAllActions];
+    [yeti stopActionByTag:0];
+    //stop action? by tag?
     CGPoint touchLocation = [touch locationInNode:self];
     [self moveYetiToPosition:touchLocation];
 }
@@ -107,6 +117,8 @@
     float duration = ccpDistance(newPosition, yetiPosition) / yetiSpeed;
     
     CCAction *actionMove = [CCActionMoveTo actionWithDuration:duration position:CGPointMake(yetiPosition.x, newPosition.y)];
+    // In order to identify the action to stop
+    [actionMove setTag:0];
     [yeti runAction:actionMove];
 }
 
@@ -146,7 +158,7 @@
             CGPoint newSnowBallPosition = snowBall.position;
             newSnowBallPosition.x = [CCDirector sharedDirector].viewSize.width + snowBall.texture.contentSize.width / 2;
 
-            CCAction *throwSnowBall = [CCActionMoveTo actionWithDuration:1 position:newSnowBallPosition];
+            CCAction *throwSnowBallAction = [CCActionMoveTo actionWithDuration:1 position:newSnowBallPosition];
             
             // Explain blocks, new use
             CCActionCallBlock *callDidThrown = [CCActionCallBlock actionWithBlock:^{
@@ -154,15 +166,23 @@
                 CGPoint position = snowBall.position;
                 position.x = -snowBall.texture.contentSize.width / 2;
                 snowBall.position = position;
+                
+                // STEP 8 - Show and increase score
+                if (!collisionDetected){
+                    [self increaseScore];
+                }
+               
             }];
 
             // Explain sequences and nil
-            CCActionSequence *sequence = [CCActionSequence actionWithArray:@[throwSnowBall, callDidThrown]];
+            CCActionSequence *sequence = [CCActionSequence actionWithArray:@[throwSnowBallAction, callDidThrown]];
             [snowBall runAction:sequence];
             
             // STEP 6 - Set visible the snow ball once it's out of the screen
             [snowBall setVisible:TRUE];
             
+            // STEP 8 - Reset collision flag
+            collisionDetected = FALSE;
             break;
         }
     }
@@ -173,28 +193,39 @@
     for (CCSprite *snowBall in snowBalls){
         
         if (CGRectIntersectsRect(snowBall.boundingBox, yeti.boundingBox)) {
-            CCLOG(@"COLLISION!");
             [snowBall setVisible:FALSE];
             
              // STEP 7 - Let's make blink the yeti!
             [self manageCollision];
-        }
+        } /*else {
+            collisionDetected = FALSE;
+
+        }*/
+
     }
 }
 
 -(void) manageCollision{
-    
+    // STEP 8 - Show and increase score
+    collisionDetected = TRUE;
     
     // STEP 7 - Let's make blink the yeti!
     CCAction *actionBlink = [CCActionBlink actionWithDuration:0.9 blinks:3];
     CCActionCallBlock *callDidBlink = [CCActionCallBlock actionWithBlock:^{
-        CCLOG(@"STOP ACTIONS!");
         [yeti setVisible:TRUE];
     }];
     
     CCActionSequence *sequence = [CCActionSequence actionWithArray:@[actionBlink, callDidBlink]];
     [yeti runAction:sequence];
+}
 
+// STEP 8 - Show and increase score
+-(void) increaseScore{
+    gameScore += 10;
+    CCLOG(@"game score %d", gameScore);
+    [scoreLabel setString:[NSString stringWithFormat:@"%i", gameScore]];
+    collisionDetected = FALSE;
+    
 }
 
 
