@@ -72,6 +72,9 @@
         
         // STEP 8 - Show and increase score
         collisionDetected = FALSE;
+        
+        // STEP 9 - Playing audio - Explain new way of playing music
+        [[OALSimpleAudio sharedInstance] playBg:@"background_music.mp3" loop:YES];
     }
     
     return self;
@@ -174,6 +177,9 @@
                
             }];
 
+            // STEP 9 - Playing audio
+            [[OALSimpleAudio sharedInstance] playEffect:@"avalanche.mp3"];
+            
             // Explain sequences and nil
             CCActionSequence *sequence = [CCActionSequence actionWithArray:@[throwSnowBallAction, callDidThrown]];
             [snowBall runAction:sequence];
@@ -208,6 +214,8 @@
 -(void) manageCollision{
     // STEP 8 - Show and increase score
     collisionDetected = TRUE;
+    
+    // STEP 9 - Make yeti grrr
     
     // STEP 7 - Let's make blink the yeti!
     CCAction *actionBlink = [CCActionBlink actionWithDuration:0.9 blinks:3];
